@@ -38,7 +38,7 @@ function setup(){
 
     bird = new Bird(100,100);
 
-    chain = new Chain(bird.body, constraintLog.body);
+    chain = new Chain(bird.body, {x: 200, y: 100});
 
     
 }
@@ -70,4 +70,13 @@ function draw(){
     chain.display();
 
     
+}
+
+function mouseDragged() {
+    Matter.Body.setPosition(bird.body, {x: mouseX, y: mouseY})
+
+}
+
+function mouseReleased() {
+ chain.fly();   
 }

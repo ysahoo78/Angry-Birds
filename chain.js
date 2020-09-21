@@ -1,21 +1,28 @@
 class Chain {
-    constructor(bodyA, bodyB){
+    constructor(bodyA, pointB){
         var options = {
-            bodyA: bird.body,
-            bodyB: constraintLog.body,
+            bodyA: bodyA,
+            pointB: pointB,
             stiffness : 0.5,
             length : 10
     
     
         }
+        this.pointB = pointB;
+
         this.chain = Constraint.create(options);
         World.add(world, this.chain);
 
     }
     display(){
-    var pointA = this.chain.bodyA.position;
-    var pointB = this.chain.bodyB.position;
-    line(pointA.x, pointA.y, pointB.x, pointB.y);    
+    if (this.chain.bodyA){
+        var pointA = this.chain.bodyA.position;
+        var pointB = this.pointB;
+        line(pointA.x, pointA.y, pointB.x, pointB.y);    
     }
-
+       
+    }
+    fly (){
+        this.chain.bodyA = null
+    }
 }
